@@ -1,55 +1,52 @@
 {% extends "layout.html" %}
 
-{% block page_header %}
-<div class="w-full bg-azure-mist py-4 flex justify-center border-none">
-  <h2 class="text-4xl font-semibold text-off-black">
+{% block main %}
+  <!-- HOME LABEL -->
+  <h2 class="text-4xl font-semibold text-off-black text-center mb-8">
     Home
   </h2>
-</div>
-{% endblock %}
 
-{% block main %}
-<div class="w-full max-w-md px-4 space-y-6">
+  <div class="space-y-6">
 
-  <!-- RATE BUTTON -->
-  <a href="{{ url_for('rate') }}"
-     class="w-full sm:w-80 bg-mint-leaf rounded-full
-            py-4 flex items-center justify-center gap-4
-            text-off-black text-3xl font-black italic shadow-xl
-            hover:scale-105 hover:shadow-2xl transition">
-    <span>RATE</span>
-    <span class="text-4xl">⭐</span>
-  </a>
+    <!-- RATE -->
+    <a href="{{ url_for('rate') }}"
+       class="block w-full bg-mint-leaf rounded-full
+              py-4 flex items-center justify-center gap-4
+              text-off-black text-3xl font-black italic shadow-xl
+              hover:scale-105 hover:shadow-2xl transition">
+      <span>RATE</span>
+      <span class="text-4xl">⭐</span>
+    </a>
 
-  <!-- MENU BUTTON -->
-  <a href="{{ url_for('menu') }}"
-     class="w-full sm:w-80 bg-mint-leaf rounded-full
-            py-4 flex items-center justify-center gap-4
-            text-off-black text-3xl font-black italic shadow-xl
-            hover:scale-105 hover:shadow-2xl transition">
-    <span>MENU</span>
-    <span class="text-4xl">📋</span>
-  </a>
+    <!-- MENU -->
+    <a href="{{ url_for('menu') }}"
+       class="block w-full bg-mint-leaf rounded-full
+              py-4 flex items-center justify-center gap-4
+              text-off-black text-3xl font-black italic shadow-xl
+              hover:scale-105 hover:shadow-2xl transition">
+      <span>MENU</span>
+      <span class="text-4xl">📋</span>
+    </a>
 
-  <!-- REVIEWS BUTTON -->
-  <a href="{{ url_for('reviews') }}"
-     class="w-full sm:w-80 bg-mint-leaf rounded-full
-            py-4 flex items-center justify-center gap-4
-            text-off-black text-3xl font-black italic shadow-xl
-            hover:scale-105 hover:shadow-2xl transition">
-    <span>REVIEWS</span>
-    <span class="text-4xl">📝</span>
-  </a>
+    <!-- REVIEWS -->
+    <a href="{{ url_for('reviews') }}"
+       class="block w-full bg-mint-leaf rounded-full
+              py-4 flex items-center justify-center gap-4
+              text-off-black text-3xl font-black italic shadow-xl
+              hover:scale-105 hover:shadow-2xl transition">
+      <span>REVIEWS</span>
+      <span class="text-4xl">📝</span>
+    </a>
 
-  <!-- ABOUT BUTTON -->
-  <a href="{{ url_for('about') }}"
-     class="w-full sm:w-80 bg-mint-leaf rounded-full
-            py-4 flex items-center justify-center gap-4
-            text-off-black text-3xl font-black italic shadow-xl
-            hover:scale-105 hover:shadow-2xl transition">
-    <span>ABOUT</span>
-    <span class="text-4xl">ℹ️</span>
-  </a>
+    <!-- ABOUT -->
+    <a href="{{ url_for('about') }}"
+       class="block w-full bg-mint-leaf rounded-full
+              py-4 flex items-center justify-center gap-4
+              text-off-black text-3xl font-black italic shadow-xl
+              hover:scale-105 hover:shadow-2xl transition">
+      <span>ABOUT</span>
+      <span class="text-4xl">ℹ️</span>
+    </a>
 
-</div>
+  </div>
 {% endblock %}

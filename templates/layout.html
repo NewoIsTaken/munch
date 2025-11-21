@@ -1,42 +1,69 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="initial-scale=1, width=device-width" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="initial-scale=1, width=device-width" />
 
-	<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
-	<link href="/static/styles.css" rel="stylesheet" />
+  <link href="/static/styles.css" rel="stylesheet" />
 
-	<style type="text/tailwindcss">
-		@theme {
-			--color-off-black: #020202;
-			--color-dim-gray: #676767;
-			--color-azure-mist: #E6FAFA;
-			--color-mint-leaf: #5FBB97;
-			--color-crimson: #950A22;
-			--color-stone: #C4C4C4;
-		}
-	</style>
+  <style type="text/tailwindcss">
+    @theme {
+      --color-off-black: #020202;
+      --color-dim-gray: #676767;
+      --color-azure-mist: #E6FAFA;
+      --color-mint-leaf: #5FBB97;
+      --color-crimson: #950A22;
+      --color-stone: #C4C4C4;
+    }
+  </style>
 
-	<title>Munch!</title>
+  <title>Munch!</title>
 </head>
 
 <body class="bg-stone">
-  <!-- Top title bar -->
-  <header class="w-full bg-stone py-12 flex justify-center items-end shadow-md">
-    <h1 class="text-4xl font-extrabold text-crimson">Munch!</h1>
-  </header>
 
-  <!-- OPTIONAL sub-header (varies by page) -->
-  {% block page_header %}{% endblock %}
+  <!-- TOP TITLE BLOCK -->
+	<header class="relative w-full bg-stone py-14 flex justify-center items-end">
+		<a href="{{ url_for('index') }}" class="hover:opacity-80 transition">
+			<h1 class="text-4xl md:text-5xl font-extrabold text-crimson cursor-pointer">
+			Munch!
+			</h1>
+		</a>
 
-  <!-- Page content -->
-  <main class="w-full bg-azure-mist min-h-screen flex flex-col items-center pt-3 pb-10">
-    {% block main %}{% endblock %}
+		<!-- Seamless sine-like wave: gray above, azure below -->
+		<div class="absolute bottom-0 left-0 w-full leading-[0]">
+			<svg
+			class="block w-full h-8"
+			xmlns="http://www.w3.org/2000/svg"
+			viewBox="0 0 120 20"
+			preserveAspectRatio="none">
+
+			<!-- Midline at y=10, amplitude 5, repeats uniformly -->
+			<path
+				d="
+				M0,10
+				C5,0   15,0   20,10
+				S35,20 40,10
+				S55,0  60,10
+				S75,20 80,10
+				S95,0  100,10
+				S115,20 120,10
+				V20 H0 Z"
+				fill="#E6FAFA" />
+			</svg>
+		</div>
+	</header>
+
+
+  <!-- MAIN: full-width blue, centered inner column -->
+  <main class="w-full bg-azure-mist min-h-screen pt-4 pb-10">
+    <div class="w-full max-w-md mx-auto px-4">
+      {% block main %}{% endblock %}
+    </div>
   </main>
-</body>
 
+</body>
 </html>
