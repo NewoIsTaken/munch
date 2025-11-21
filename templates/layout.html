@@ -10,15 +10,33 @@
 
 	<link href="/static/styles.css" rel="stylesheet" />
 
-	<title>{% block title %}{% endblock %}</title>
+	<style type="text/tailwindcss">
+		@theme {
+			--color-off-black: #020202;
+			--color-dim-gray: #676767;
+			--color-azure-mist: #E6FAFA;
+			--color-mint-leaf: #5FBB97;
+			--color-crimson: #950A22;
+			--color-stone: #C4C4C4;
+		}
+	</style>
+
+	<title>Munch!</title>
 </head>
 
-<body>
-	<header>
-	</header>
-	<main class="container py-5 text-center">
-		{% block main %}{% endblock %}
-	</main>
+<body class="bg-stone">
+  <!-- Top title bar -->
+  <header class="w-full bg-stone py-12 flex justify-center items-end shadow-md">
+    <h1 class="text-4xl font-extrabold text-crimson">Munch!</h1>
+  </header>
+
+  <!-- OPTIONAL sub-header (varies by page) -->
+  {% block page_header %}{% endblock %}
+
+  <!-- Page content -->
+  <main class="w-full bg-azure-mist min-h-screen flex flex-col items-center pt-3 pb-10">
+    {% block main %}{% endblock %}
+  </main>
 </body>
 
 </html>
