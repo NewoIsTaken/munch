@@ -1,11 +1,52 @@
 {% extends "layout.html" %}
 
-{% block title %}
-Munch
-{% endblock %}
-
 {% block main %}
-<div>
+  <!-- HOME LABEL -->
+  <h2 class="text-4xl font-semibold text-off-black text-center mb-8">
+    Home
+  </h2>
 
-</div>
+  <div class="space-y-6">
+
+    <!-- RATE -->
+    <a href="{{ url_for('rate') }}"
+       class="block w-full bg-mint-leaf rounded-full
+              py-4 flex items-center justify-center gap-4
+              text-off-black text-3xl font-black italic shadow-xl
+              hover:scale-105 hover:shadow-2xl transition">
+      <span>RATE</span>
+      <span class="text-4xl">⭐</span>
+    </a>
+
+    <!-- MENU -->
+    <a href="{{ url_for('menu') }}"
+       class="block w-full bg-mint-leaf rounded-full
+              py-4 flex items-center justify-center gap-4
+              text-off-black text-3xl font-black italic shadow-xl
+              hover:scale-105 hover:shadow-2xl transition">
+      <span>MENU</span>
+      <span class="text-4xl">📋</span>
+    </a>
+
+    <!-- REVIEWS -->
+    <a href="{{ url_for('reviews') }}"
+       class="block w-full bg-mint-leaf rounded-full
+              py-4 flex items-center justify-center gap-4
+              text-off-black text-3xl font-black italic shadow-xl
+              hover:scale-105 hover:shadow-2xl transition">
+      <span>REVIEWS</span>
+      <span class="text-4xl">📝</span>
+    </a>
+
+    <!-- ABOUT -->
+    <a href="{{ url_for('about') }}"
+       class="block w-full bg-mint-leaf rounded-full
+              py-4 flex items-center justify-center gap-4
+              text-off-black text-3xl font-black italic shadow-xl
+              hover:scale-105 hover:shadow-2xl transition">
+      <span>ABOUT</span>
+      <span class="text-4xl">ℹ️</span>
+    </a>
+
+  </div>
 {% endblock %}
