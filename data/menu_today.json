@@ -1,0 +1,103 @@
+{
+  "date": "11/23/2025",
+  "lunch": [
+    {
+      "name": "Today's Soup",
+      "items": [
+        "BUFFALO CHICKEN SOUP",
+        "WHITE BEAN AND ESCAROLE"
+      ]
+    },
+    {
+      "name": "Brunch",
+      "items": [
+        "BACON",
+        "CHOCOLATE CHIP PANCAKES",
+        "CHORIZO AND CHEDDAR FRITTATA",
+        "FRESH FRUIT SALAD",
+        "HOME FRIED POTATOES",
+        "SCRAMBLED CAGE FREE EGGS",
+        "SMOKED SALMON"
+      ]
+    },
+    {
+      "name": "Entrees",
+      "items": [
+        "BLUEBERRIES",
+        "STEEL CUT OATMEAL",
+        "GRILLED CHICKEN BREAST"
+      ]
+    },
+    {
+      "name": "Sides",
+      "items": [
+        "FLOUR TORTILLAS",
+        "GUACAMOLE",
+        "SHREDDED CHEDDAR CHEESE",
+        "SOUR CREAM",
+        "THICK AND CHUNKY MILD SALSA"
+      ]
+    },
+    {
+      "name": "Desserts",
+      "items": [
+        "CHOCOLATE CHIP COOKIES",
+        "PINEAPPLE SOFT SERVE",
+        "STRAWBERRY SOFT SERVE"
+      ]
+    }
+  ],
+  "dinner": [
+    {
+      "name": "Today's Soup",
+      "items": [
+        "BUFFALO CHICKEN SOUP",
+        "WHITE BEAN AND ESCAROLE"
+      ]
+    },
+    {
+      "name": "Entrees",
+      "items": [
+        "BBQ CHICKEN BREAST",
+        "HONEY GLAZED RIBS"
+      ]
+    },
+    {
+      "name": "Starch",
+      "items": [
+        "MACARONI AND CHEESE"
+      ]
+    },
+    {
+      "name": "Sides",
+      "items": [
+        "CLASSIC DINNER ROLL"
+      ]
+    },
+    {
+      "name": "Desserts",
+      "items": [
+        "BANANA",
+        "BUTTERSCOTCH TOPPING",
+        "CARAMEL DESSERT SAUCE",
+        "CHOCOLATE ICE CREAM",
+        "HOOD VANILLA ICE CREAM",
+        "HOT FUDGE",
+        "LACTAID ICE CREAM",
+        "MARASCHINO CHERRY HALVES",
+        "PINEAPPLE SOFT SERVE",
+        "PLAIN M&M TOPPING",
+        "RAINBOW SPRINKLES",
+        "STRAWBERRY SOFT SERVE",
+        "WHIPPED TOPPING"
+      ]
+    },
+    {
+      "name": "Brain Break",
+      "items": [
+        "SALSA",
+        "TORTILLA CHIPS"
+      ]
+    }
+  ]
+}

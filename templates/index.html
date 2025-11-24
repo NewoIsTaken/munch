@@ -1,52 +1,48 @@
 {% extends "layout.html" %}
 
 {% block main %}
-  <!-- HOME LABEL -->
-  <h2 class="text-4xl font-semibold text-off-black text-center mb-8">
-    Home
-  </h2>
 
-  <div class="space-y-6">
+<h2 class="text-xl font-semibold text-off-black mb-6 text-center">
+    Home
+</h2>
+
+<div class="flex flex-col items-center space-y-6">
+
+    <!-- LUNCH MENU -->
+    <a href="{{ url_for('menu_lunch') }}"
+       class="bg-mint-leaf text-off-black font-semibold text-xl px-10 py-6 rounded-xl shadow-md w-64 flex justify-center items-center space-x-3 hover:opacity-95">
+        <span class="text-4xl">🍱</span>
+        <span>Lunch Menu</span>
+    </a>
+
+    <!-- DINNER MENU -->
+    <a href="{{ url_for('menu_dinner') }}"
+       class="bg-mint-leaf text-off-black font-semibold text-xl px-10 py-6 rounded-xl shadow-md w-64 flex justify-center items-center space-x-3 hover:opacity-95">
+        <span class="text-4xl">🍽️</span>
+        <span>Dinner Menu</span>
+    </a>
 
     <!-- RATE -->
     <a href="{{ url_for('rate') }}"
-       class="block w-full bg-mint-leaf rounded-full
-              py-4 flex items-center justify-center gap-4
-              text-off-black text-3xl font-black italic shadow-xl
-              hover:scale-105 hover:shadow-2xl transition">
-      <span>RATE</span>
-      <span class="text-4xl">⭐</span>
-    </a>
-
-    <!-- MENU -->
-    <a href="{{ url_for('menu') }}"
-       class="block w-full bg-mint-leaf rounded-full
-              py-4 flex items-center justify-center gap-4
-              text-off-black text-3xl font-black italic shadow-xl
-              hover:scale-105 hover:shadow-2xl transition">
-      <span>MENU</span>
-      <span class="text-4xl">📋</span>
+       class="bg-mint-leaf text-off-black font-semibold text-xl px-10 py-6 rounded-xl shadow-md w-64 flex justify-center items-center space-x-3 hover:opacity-95">
+        <span class="text-4xl">⭐</span>
+        <span>Rate</span>
     </a>
 
     <!-- REVIEWS -->
     <a href="{{ url_for('reviews') }}"
-       class="block w-full bg-mint-leaf rounded-full
-              py-4 flex items-center justify-center gap-4
-              text-off-black text-3xl font-black italic shadow-xl
-              hover:scale-105 hover:shadow-2xl transition">
-      <span>REVIEWS</span>
-      <span class="text-4xl">📝</span>
+       class="bg-mint-leaf text-off-black font-semibold text-xl px-10 py-6 rounded-xl shadow-md w-64 flex justify-center items-center space-x-3 hover:opacity-95">
+        <span class="text-4xl">📝</span>
+        <span>Reviews</span>
     </a>
 
     <!-- ABOUT -->
     <a href="{{ url_for('about') }}"
-       class="block w-full bg-mint-leaf rounded-full
-              py-4 flex items-center justify-center gap-4
-              text-off-black text-3xl font-black italic shadow-xl
-              hover:scale-105 hover:shadow-2xl transition">
-      <span>ABOUT</span>
-      <span class="text-4xl">ℹ️</span>
+       class="bg-mint-leaf text-off-black font-semibold text-xl px-10 py-6 rounded-xl shadow-md w-64 flex justify-center items-center space-x-3 hover:opacity-95">
+        <span class="text-4xl">ℹ️</span>
+        <span>About</span>
     </a>
 
-  </div>
+</div>
+
 {% endblock %}

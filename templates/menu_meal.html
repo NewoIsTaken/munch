@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block main %}
+  <h2 class="text-2xl font-semibold text-off-black text-center mb-2">
+    {{ meal_name }} Menu
+  </h2>
+
+  {% if menu %}
+    <p class="text-dim-gray mb-4 text-center">
+      Menu for {{ menu.date }}
+    </p>
+
+    <div class="space-y-6 w-full max-w-xl mx-auto text-left">
+      {% for cat in menu.categories %}
+        <div class="bg-white/60 rounded-xl shadow p-4">
+          <h3 class="text-xl font-bold text-off-black mb-2">
+            {{ cat.name }}
+          </h3>
+          <ul class="list-disc list-inside text-off-black">
+            {% for item in cat["items"] %}
+              <li>{{ item }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p class="text-dim-gray text-center">
+      No {{ meal_name | lower }} menu data available. Try running <code>fetch_menu.py</code>.
+    </p>
+  {% endif %}
+{% endblock %}
