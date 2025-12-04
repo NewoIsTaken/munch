@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+
+
+{% block main %}
+
+{% for item in entrees %}
+<p>{{ item["Recipe_Print_As_Name"] }}</p>
+{% endfor %}
+
+{% endblock %}
