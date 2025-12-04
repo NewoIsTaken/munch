@@ -1,6 +1,7 @@
 """Module with utilites for fetching things from HUDS's API"""
 
 import os
+import datetime
 import requests
 from dotenv import load_dotenv
 
@@ -28,7 +29,7 @@ def get_dhalls():
     return clean_list
 
 
-def get_menu(location):
+def get_menu(location, meal):
     """Get and return menu items given the dining hall location ID"""
     endpoint = "recipes"
 
@@ -39,4 +40,13 @@ def get_menu(location):
     response = requests.get(
         url=URL + endpoint, params=params, headers=headers, timeout=100)
 
-    return response.json()
+    items = response.json()
+
+    date = datetime.datetime.now()
+    date_string = date.strftime("%m/%d/%Y")
+
+    clean_list = [item for item in items
+                  if item["Serve_Date"] == date_string
+                  and item["Meal_Number"] == meal]
+
+    return clean_list
