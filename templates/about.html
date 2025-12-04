@@ -3,87 +3,87 @@
 {% block main %}
 
 <h2 class="text-4xl font-semibold text-off-black text-center mb-8">
-    About
-  </h2>
+	About
+</h2>
 
 <div class="flex transition-transform duration-700 ease-in-out" id="carousel-inner">
 
-    <div class="w-full flex-shrink-0 flex flex-col items-center">
-        <img src="{{ url_for('static', filename='brian.jpeg') }}" class="w-full h-80 object-contain" alt="Brian Tollar">
-        <p class="text-center text-lg mt-2 font-semibold">Brian Tollar</p>
-        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=briantollar@college.harvard.edu"
-   		target="_blank"
-   		class="flex items-center gap-1 text-blue-600 hover:underline">
-   		📧 briantollar@college.harvard.edu
-</a>
+	<div class="w-full flex-shrink-0 flex flex-col items-center">
+		<img src="{{ url_for('static', filename='brian.jpeg') }}" class="w-full h-80 object-contain" alt="Brian Tollar">
+		<p class="text-center text-lg mt-2 font-semibold">Brian Tollar</p>
+		<a href="https://mail.google.com/mail/?view=cm&fs=1&to=briantollar@college.harvard.edu" target="_blank"
+			class="flex items-center gap-1 text-blue-600 hover:underline">
+			📧 briantollar@college.harvard.edu
+		</a>
 
-        </a>
-    </div>
+		</a>
+	</div>
 
-    <div class="w-full flex-shrink-0 flex flex-col items-center">
-        <img src="{{ url_for('static', filename='brody.png') }}" class="w-full h-80 object-contain" alt="Brody Van Wave">
-        <p class="text-center text-lg mt-2 font-semibold">Brody Van Wave</p>
-        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=brodyvanwave@college.harvard.edu"
-   		target="_blank"
-   		class="flex items-center gap-1 text-blue-600 hover:underline">
-   		📧 brodyvanwave@college.harvard.edu
-</a>
+	<div class="w-full flex-shrink-0 flex flex-col items-center">
+		<img src="{{ url_for('static', filename='brody.png') }}" class="w-full h-80 object-contain"
+			alt="Brody Van Wave">
+		<p class="text-center text-lg mt-2 font-semibold">Brody Van Wave</p>
+		<a href="https://mail.google.com/mail/?view=cm&fs=1&to=brodyvanwave@college.harvard.edu" target="_blank"
+			class="flex items-center gap-1 text-blue-600 hover:underline">
+			📧 brodyvanwave@college.harvard.edu
+		</a>
 
-        </a>
-    </div>
+		</a>
+	</div>
 
-    <div class="w-full flex-shrink-0 flex flex-col items-center">
-        <img src="{{ url_for('static', filename='owen.jpeg') }}" class="w-full h-80 object-contain" alt="Owen Wang">
-        <p class="text-center text-lg mt-2 font-semibold">Owen Wang</p>
-        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=owenwang@college.harvard.edu"
-   		target="_blank"
-   		class="flex items-center gap-1 text-blue-600 hover:underline">
-   		📧 owenwang@college.harvard.edu
-</a>
+	<div class="w-full flex-shrink-0 flex flex-col items-center">
+		<img src="{{ url_for('static', filename='owen.jpeg') }}" class="w-full h-80 object-contain" alt="Owen Wang">
+		<p class="text-center text-lg mt-2 font-semibold">Owen Wang</p>
+		<a href="https://mail.google.com/mail/?view=cm&fs=1&to=owenwang@college.harvard.edu" target="_blank"
+			class="flex items-center gap-1 text-blue-600 hover:underline">
+			📧 owenwang@college.harvard.edu
+		</a>
 
-        </a>
-    </div>
+		</a>
+	</div>
 
 </div>
 <div>
-    <button id="prev" class="absolute top-1/2 left-4 -translate-y-1/2 bg-black/40 text-white px-3 py-2 rounded-full hover:bg-black/70">
-        ❮
-    </button>
+	<button id="prev"
+		class="absolute top-1/2 left-4 -translate-y-1/2 bg-black/40 text-white px-3 py-2 rounded-full hover:bg-black/70">
+		❮
+	</button>
 
-    <button id="next" class="absolute top-1/2 right-4 -translate-y-1/2 bg-black/40 text-white px-3 py-2 rounded-full hover:bg-black/70">
-        ❯
-    </button>
+	<button id="next"
+		class="absolute top-1/2 right-4 -translate-y-1/2 bg-black/40 text-white px-3 py-2 rounded-full hover:bg-black/70">
+		❯
+	</button>
 </div>
 
 <div class="max-w-lg mx-auto text-center mt-6 px-4">
-  <p class="text-lg font-semibold text-off-black">
-    About MUNCH:
-  </p>
+	<p class="text-lg font-semibold text-off-black">
+		About MUNCH:
+	</p>
 
-  <p class="text-base text-gray-600 mt-2">
-    Enter some inspiring text about MUNCH and its purpose and shit like that
-  </p>
+	<p class="text-base text-gray-600 mt-2">
+		Enter some inspiring text about MUNCH and its purpose and shit like that
+	</p>
 </div>
 
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-    const inner = document.getElementById("carousel-inner");
-    const slides = inner.children.length;
-    let index = 0;
+	document.addEventListener("DOMContentLoaded", () => {
+		const inner = document.getElementById("carousel-inner");
+		const slides = inner.children.length;
+		let index = 0;
 
-    function updateCarousel() {
-        inner.style.transform = `translateX(-${index * 100}%)`;
-    }
+		function updateCarousel() {
+			inner.style.transform = `translateX(-${index * 100}%)`;
+		}
 
-    document.getElementById("next").onclick = () => {
-        index = (index + 1) % slides;
-        updateCarousel();
-    };
+		document.getElementById("next").onclick = () => {
+			index = (index + 1) % slides;
+			updateCarousel();
+		};
 
-    document.getElementById("prev").onclick = () => {
-        index = (index - 1 + slides) % slides;
-        updateCarousel();
-    };
-});
+		document.getElementById("prev").onclick = () => {
+			index = (index - 1 + slides) % slides;
+			updateCarousel();
+		};
+	});
 </script>
 {% endblock %}
