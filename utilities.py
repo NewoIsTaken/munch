@@ -1,7 +1,7 @@
 """Module with utilites for fetching things from HUDS's API"""
 
 import os
-import datetime
+from datetime import datetime, time
 import requests
 from dotenv import load_dotenv
 
@@ -42,11 +42,37 @@ def get_menu(location, meal):
 
     items = response.json()
 
-    date = datetime.datetime.now()
+    date = datetime.now()
     date_string = date.strftime("%m/%d/%Y")
 
     clean_list = [item for item in items
                   if item["Serve_Date"] == date_string
                   and item["Meal_Number"] == meal]
 
-    return clean_list
+    meal_dict = {
+        "fetched_on": date_string,
+        "entrees": [item for item in clean_list if item["Menu_Category_Name"] == "Entrees"],
+        "soups": [item for item in clean_list if item["Menu_Category_Name"] == "Today's Soup"]
+    }
+
+    return meal_dict
+
+
+def lunch_time(start=time(11, 30), end=time(2, 00), now=datetime.now().time()):
+    """Check if current time is during dinner"""
+    now = now or datetime.now().time()
+    # handles ranges that do not cross midnight
+    if start <= end:
+        return start <= now <= end
+    # handles ranges that cross midnight (e.g., 22:00–02:00)
+    return now >= start or now <= end
+
+
+def dinner_time(start=time(4, 30), end=time(7, 30), now=datetime.now().time()):
+    """Check if current time is during dinner"""
+    now = now or datetime.now().time()
+    # handles ranges that do not cross midnight
+    if start <= end:
+        return start <= now <= end
+    # handles ranges that cross midnight (e.g., 22:00–02:00)
+    return now >= start or now <= end

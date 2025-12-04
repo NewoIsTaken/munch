@@ -1,9 +1,23 @@
 """Munch Flask App"""
 import datetime
-from flask import Flask, render_template, request
-from utilities import get_dhalls, get_menu
+from datetime import datetime
+from flask import Flask, redirect, render_template, request
+from utilities import get_dhalls, get_menu, lunch_time, dinner_time
 
 app = Flask(__name__)
+
+# Setup variables to store the menu so we don't have to fetch it every time.
+lunch = {
+    "fetched_on": "",
+    "entrees": [],
+    "soups": []
+}
+
+dinner = {
+    "fetched_on": "",
+    "entrees": [],
+    "soups": []
+}
 
 
 @app.route("/")
@@ -28,12 +42,25 @@ def review():
 
     location_id = request.args.get("location")
 
-    menu = get_menu(location=location_id, meal=3)
+    date = datetime.now()
+    date_string = date.strftime("%m/%d/%Y")
 
-    entrees = [item for item in menu if item["Menu_Category_Name"] == "Entrees"]
-    soups = [item for item in menu if item["Menu_Category_Name"] == "Today's Soup"]
+    if lunch_time():
+        if lunch["fetched_on"] != date_string:
+            lunch.update(get_menu(location=location_id, meal=2))
 
-    return render_template("review.html", entrees=entrees, soups=soups)
+        return render_template("review.html", entrees=lunch["entrees"], soups=lunch["soups"])
+
+    elif dinner_time():
+        if dinner["fetched_on"] != date_string:
+            dinner.update(get_menu(location=location_id, meal=3))
+
+        return render_template("review.html", entrees=dinner["entrees"], soups=dinner["soups"])
+
+    else:
+        return redirect("/reviews")
+
+    # If dinner menu has not been fetched, fetch it and update the dinner dict
 
 
 @app.route("/dhall-select")
