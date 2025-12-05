@@ -2,7 +2,11 @@
 
 
 {% block main %}
-    
 
+<p>{{ error }}</p>
+
+{% for dish in data %}
+<p>{{ dish[0] }}: {{ dish[1] }}</p>
+{% endfor %}
 
 {% endblock %}
