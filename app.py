@@ -45,14 +45,14 @@ def review():
             location[location_id]["lunch"].update(
                 get_menu(location=location_id, meal=2))
 
-        return render_template("review.html", dishes=location[location_id]["lunch"], meal_name="Lunch", meal_date=date_string)
+        return render_template("review.html", dishes=location[location_id]["lunch"], meal_name="Lunch", meal_date=date_string, location=location_id)
 
     elif dinner_time():
         if location[location_id]["dinner"]["fetched_on"] != date_string:
             location[location_id]["dinner"].update(
                 get_menu(location=location_id, meal=3))
 
-        return render_template("review.html", dishes=location[location_id]["dinner"], meal_name="Dinner", meal_date=date_string)
+        return render_template("review.html", dishes=location[location_id]["dinner"], meal_name="Dinner", meal_date=date_string, location=location_id)
 
     else:
         return redirect("/reviews")
@@ -65,6 +65,44 @@ def select_dhall():
     """Start rate process by rendering dining hall selector"""
     dhalls = get_dhalls()
     return render_template("dhall-select.html", dhalls=dhalls)
+
+
+@app.route("/rate", methods=["POST"])
+def process_rating():
+    """Take in rating information from form, process it, and store it"""
+    ratings = {}
+    location_id = int(request.form.get("location"))
+
+    if lunch_time():
+        for category in location[location_id]["lunch"]:
+            if category == "fetched_on":
+                continue
+
+            for dish in location[location_id]["lunch"][category]:
+                try:
+                    rating = int(request.form.get(
+                        dish["Recipe_Print_As_Name"]))
+                except ValueError:
+                    continue
+
+                ratings[dish["Recipe_Print_As_Name"]] = rating
+
+    elif dinner_time():
+        for category in location[location_id]["dinner"]:
+            if category == "fetched_on":
+                continue
+
+            for dish in location[location_id]["dinner"][category]:
+                try:
+                    rating = int(request.form.get(
+                        dish["Recipe_Print_As_Name"]))
+                except ValueError:
+                    continue
+                ratings[dish["Recipe_Print_As_Name"]] = rating
+
+    print(ratings)
+
+    return redirect("/")
 
 
 @app.route("/reviews")

@@ -9,6 +9,7 @@
 
 <div class="space-y-6 w-full max-w-xl mx-auto text-left">
     <form method="post" action="/rate">
+        <input type="hidden" name="location" value="{{ location }}">
         {% for category in dishes %}
         {% if category != "fetched_on" %}
         <div class="bg-white/60 rounded-xl shadow p-4">
