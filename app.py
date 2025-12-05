@@ -159,7 +159,23 @@ def reviews():
 
 @app.route("/menu")
 def menu():
-    return render_template("menu.html")
+    """Get menu info and render it"""
+    location_id = int(request.args.get("location"))
+
+    date = datetime.now()
+    date_string = date.strftime("%m/%d/%Y")
+
+    # check if we already have a current lunch menu fetched
+    if location[location_id]["lunch"]["fetched_on"] != date_string:
+        location[location_id]["lunch"].update(
+            get_menu(location=location_id, meal=2))
+
+    # check if we already have a current dinner menu fetched
+    if location[location_id]["dinner"]["fetched_on"] != date_string:
+        location[location_id]["dinner"].update(
+            get_menu(location=location_id, meal=3))
+
+    return render_template("menu.html", lunch=location[location_id]["lunch"], dinner=location[location_id]["dinner"], meal_date=date_string, location=location_id)
 
 
 @app.route("/about")

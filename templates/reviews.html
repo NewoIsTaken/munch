@@ -6,7 +6,32 @@
 <p>{{ error }}</p>
 
 {% for dish in data %}
-<p>{{ dish[0] }}: {{ dish[1] }}</p>
+<div class="flex items-center justify-between gap-4">
+    <div class="w-2/5 text-sm font-medium text-gray-800">{{ dish[0] }}</div>
+
+    <!-- Star container: unique id per item -->
+    <div class="w-2/5 flex items-center">
+        <div class="relative inline-block stars rating-{{ dish[1] }}" aria-label="Rating for {{ dish[0] }}">
+        </div>
+    </div>
+
+    <div class="w-1/5 text-right text-sm text-gray-700">{{ dish[1] }}/5</div>
+</div>
 {% endfor %}
+
+<script>
+    const starContainer = document.getElementsByClassName("stars");
+    for (const star of starContainer) {
+        const rating = parseFloat(Array.from(star.classList).find(c => c.includes('rating-')).split("-")[1]) || null;
+        for (let i = 1; i <= 5; i++) {
+            const starIcon = document.createElement("i");
+            starIcon.classList = "fa-solid fa-star";
+            if (rating - i >= -0.5) {
+                starIcon.classList.add("text-orange-400")
+            }
+            star.appendChild(starIcon)
+        }
+    }
+</script>
 
 {% endblock %}

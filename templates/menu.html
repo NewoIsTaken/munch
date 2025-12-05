@@ -3,6 +3,44 @@
 
 {% block main %}
 
+<h2 class="text-2xl font-semibold text-off-black text-center mb-4">Menu for {{ meal_date }}</h2>
 
+<hr class="text-gray-300 mb-5">
+
+<h3 class="text-xl font-semibold text-off-black text-center my-2">Lunch</h3>
+<div class="space-y-6 w-full max-w-xl mx-auto text-left">
+    {% for category in lunch %}
+    {% if category != "fetched_on" %}
+    <div class="bg-white/60 rounded-xl shadow p-4">
+        <h3 class="text-xl font-bold text-off-black mb-2">
+            {{ category }}
+        </h3>
+        <ul class="list-disc list-inside text-off-black">
+            {% for item in lunch[category] %}
+            <p class="mt-2">{{ item["Recipe_Print_As_Name"] }}</p>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+    {% endfor %}
+</div>
+
+<h3 class="text-xl font-semibold text-off-black text-center my-2 mt-7">Dinner</h3>
+<div class="space-y-6 w-full max-w-xl mx-auto text-left">
+    {% for category in dinner %}
+    {% if category != "fetched_on" %}
+    <div class="bg-white/60 rounded-xl shadow p-4">
+        <h3 class="text-xl font-bold text-off-black mb-2">
+            {{ category }}
+        </h3>
+        <ul class="list-disc list-inside text-off-black">
+            {% for item in dinner[category] %}
+            <p class="mt-2">{{ item["Recipe_Print_As_Name"] }}</p>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+    {% endfor %}
+</div>
 
 {% endblock %}

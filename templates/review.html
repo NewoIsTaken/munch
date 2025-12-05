@@ -5,14 +5,14 @@
 
 
 
-<h2 class="text-2xl font-semibold text-off-black text-center mb-2">{{ meal_name }} – {{ meal_date }}</h2>
+<h2 class="text-2xl font-semibold text-off-black text-center mb-4">{{ meal_name }} – {{ meal_date }}</h2>
 
 <div class="space-y-6 w-full max-w-xl mx-auto text-left">
-    <form method="post" action="/rate">
+    <form method="post" action="/rate" class="space-y-4">
         <input type="hidden" name="location" value="{{ location }}">
         {% for category in dishes %}
         {% if category != "fetched_on" %}
-        <div class="bg-white/60 rounded-xl shadow p-4 my-4">
+        <div class="bg-white/60 rounded-xl shadow p-4">
             <h3 class="text-xl font-bold text-off-black mb-2">
                 {{ category }}
             </h3>
