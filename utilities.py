@@ -60,7 +60,6 @@ def get_menu(location, meal):
 
 def lunch_time(start=time(11, 30), end=time(14, 00), now=datetime.now().time()):
     """Check if current time is during dinner"""
-    return True
     now = now or datetime.now().time()
     # handles ranges that do not cross midnight
     if start <= end:
@@ -71,7 +70,6 @@ def lunch_time(start=time(11, 30), end=time(14, 00), now=datetime.now().time()):
 
 def dinner_time(start=time(16, 30), end=time(19, 30), now=datetime.now().time()):
     """Check if current time is during dinner"""
-    return False
     now = now or datetime.now().time()
     # handles ranges that do not cross midnight
     if start <= end:
