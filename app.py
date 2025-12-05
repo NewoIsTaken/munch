@@ -47,7 +47,9 @@ def review():
             location[location_id]["lunch"].update(
                 get_menu(location=location_id, meal=2))
 
-        return render_template("review.html", dishes=location[location_id]["lunch"], meal_name="Lunch", meal_date=date_string, location=location_id)
+        return render_template("review.html",
+                               dishes=location[location_id]["lunch"],
+                               meal_name="Lunch", meal_date=date_string, location=location_id)
 
     elif dinner_time():
         # check if we already have a current dinner menu fetched
@@ -55,7 +57,9 @@ def review():
             location[location_id]["dinner"].update(
                 get_menu(location=location_id, meal=3))
 
-        return render_template("review.html", dishes=location[location_id]["dinner"], meal_name="Dinner", meal_date=date_string, location=location_id)
+        return render_template("review.html",
+                               dishes=location[location_id]["dinner"],
+                               meal_name="Dinner", meal_date=date_string, location=location_id)
 
     else:
         return redirect("/reviews")
@@ -124,6 +128,7 @@ def process_rating():
 
 @app.route("/reviews")
 def reviews():
+    """Display the current reviews"""
     location_id = int(request.args.get("location"))
 
     date = datetime.now()
@@ -175,9 +180,13 @@ def menu():
         location[location_id]["dinner"].update(
             get_menu(location=location_id, meal=3))
 
-    return render_template("menu.html", lunch=location[location_id]["lunch"], dinner=location[location_id]["dinner"], meal_date=date_string, location=location_id)
+    return render_template("menu.html",
+                           lunch=location[location_id]["lunch"],
+                           dinner=location[location_id]["dinner"],
+                           meal_date=date_string, location=location_id)
 
 
 @app.route("/about")
 def about():
+    """Render about page"""
     return render_template("about.html")

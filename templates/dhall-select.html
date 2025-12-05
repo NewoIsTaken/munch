@@ -11,9 +11,10 @@
     browser.</noscript>
 
 <form action="/{{ redirect }}" method="get">
-    <select name="location" class="w-full px-3 py-2.5 border border-2 text-heading shadow-md rounded-md"
-        onchange="this.form.submit()">
-        <option value="" disabled selected>Dining Halls</option>
+    <select id="location-select" name="location"
+        class="w-full px-3 py-2.5 border border-2 text-heading shadow-md rounded-md mb-5"
+        onchange="formSubmit(this.form)">
+        <option value="-1" disabled>Dining Halls</option>
         {% for dhall in dhalls %}
 
         <option value="{{ dhall['location_number'] }}">{{ dhall["location_name"] }}</option>
@@ -21,5 +22,55 @@
         {% endfor %}
     </select>
 </form>
+
+<script>
+    const select = document.getElementById("location-select");
+    function setCookie(cname, cvalue, exdays) {
+        const d = new Date();
+        d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+        let expires = "expires=" + d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+
+    function getCookie(cname) {
+        let name = cname + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(';');
+        for (let i = 0; i < ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+
+    function formSubmit(form) {
+        const location_id = select.value;
+
+        setCookie("location", location_id, 365);
+        form.submit();
+    }
+
+
+    const location_id = getCookie("location");
+    if (parseInt(location_id) > 0) {
+        select.value = location_id;
+        const form = document.getElementsByTagName("form")[0];
+        const submitButton = document.createElement("input");
+        submitButton.classList = "block w-full bg-mint-leaf rounded-full py-4 flex items-center justify-center gap-4 text-off-black text-3xl font-black italic shadow-xl hover:scale-105 hover:shadow-2xl transition";
+        submitButton.type = "submit";
+        submitButton.value = "Munch!"
+
+        form.appendChild(submitButton);
+    } else {
+        select.value = -1;
+    }
+
+
+</script>
 
 {% endblock %}
