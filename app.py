@@ -119,7 +119,7 @@ def process_rating():
     db_cursor.close()
     db_connection.close()
 
-    return redirect("/")
+    return redirect("/reviews?location=" + location_id)
 
 
 @app.route("/reviews")
