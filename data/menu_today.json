@@ -1,49 +1,39 @@
 {
-  "date": "11/23/2025",
+  "date": "11/24/2025",
   "lunch": [
     {
       "name": "Today's Soup",
       "items": [
-        "BUFFALO CHICKEN SOUP",
-        "WHITE BEAN AND ESCAROLE"
-      ]
-    },
-    {
-      "name": "Brunch",
-      "items": [
-        "BACON",
-        "CHOCOLATE CHIP PANCAKES",
-        "CHORIZO AND CHEDDAR FRITTATA",
-        "FRESH FRUIT SALAD",
-        "HOME FRIED POTATOES",
-        "SCRAMBLED CAGE FREE EGGS",
-        "SMOKED SALMON"
+        "CHICKEN & DUMPLING SOUP",
+        "TOMATO BASIL SOUP"
       ]
     },
     {
       "name": "Entrees",
       "items": [
-        "BLUEBERRIES",
-        "STEEL CUT OATMEAL",
-        "GRILLED CHICKEN BREAST"
+        "GRILLED CHICKEN BREAST",
+        "OVEN FRIED HALAL CHICKEN THIGHS",
+        "PHILLY CHEESE STEAK SUB"
+      ]
+    },
+    {
+      "name": "Starch",
+      "items": [
+        "SWEET POTATO FRIES"
       ]
     },
     {
       "name": "Sides",
       "items": [
-        "FLOUR TORTILLAS",
-        "GUACAMOLE",
-        "SHREDDED CHEDDAR CHEESE",
-        "SOUR CREAM",
-        "THICK AND CHUNKY MILD SALSA"
+        "WARM BUTTERMILK CORNBREAD"
       ]
     },
     {
       "name": "Desserts",
       "items": [
-        "CHOCOLATE CHIP COOKIES",
-        "PINEAPPLE SOFT SERVE",
-        "STRAWBERRY SOFT SERVE"
+        "LIME SOFT SERVE",
+        "MANGO SOFT SERVE",
+        "OATMEAL RAISIN COOKIES"
       ]
     }
   ],
@@ -51,52 +41,48 @@
     {
       "name": "Today's Soup",
       "items": [
-        "BUFFALO CHICKEN SOUP",
-        "WHITE BEAN AND ESCAROLE"
+        "CHICKEN & DUMPLING SOUP",
+        "TOMATO BASIL SOUP"
       ]
     },
     {
       "name": "Entrees",
       "items": [
-        "BBQ CHICKEN BREAST",
-        "HONEY GLAZED RIBS"
+        "GOCHUJANG CHICKEN",
+        "KOREAN BEEF BULGOGI"
       ]
     },
     {
       "name": "Starch",
       "items": [
-        "MACARONI AND CHEESE"
+        "STICKY RICE"
       ]
     },
     {
       "name": "Sides",
       "items": [
-        "CLASSIC DINNER ROLL"
+        "CHOPPED SCALLIONS",
+        "KIMCHI",
+        "PICKLED CUCUMBERS WITH CILANTRO & SCALLION",
+        "SSAMJANG SAUCE"
       ]
     },
     {
       "name": "Desserts",
       "items": [
-        "BANANA",
-        "BUTTERSCOTCH TOPPING",
-        "CARAMEL DESSERT SAUCE",
-        "CHOCOLATE ICE CREAM",
-        "HOOD VANILLA ICE CREAM",
-        "HOT FUDGE",
-        "LACTAID ICE CREAM",
-        "MARASCHINO CHERRY HALVES",
-        "PINEAPPLE SOFT SERVE",
-        "PLAIN M&M TOPPING",
-        "RAINBOW SPRINKLES",
-        "STRAWBERRY SOFT SERVE",
+        "CANNOLI SHELLS",
+        "CHOCOLATE SPRINKLES",
+        "LIME SOFT SERVE",
+        "MANGO SOFT SERVE",
+        "RICOTTA CREAM",
         "WHIPPED TOPPING"
       ]
     },
     {
       "name": "Brain Break",
       "items": [
-        "SALSA",
-        "TORTILLA CHIPS"
+        "POUND CAKE",
+        "STRAWBERRY SAUCE"
       ]
     }
   ]
