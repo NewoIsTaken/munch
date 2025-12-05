@@ -34,7 +34,7 @@ def get_menu(location, meal):
     endpoint = "recipes"
 
     params = {
-        "locationId": location
+        "locationId": f'{location:02}'
     }
 
     response = requests.get(

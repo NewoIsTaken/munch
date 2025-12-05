@@ -7,17 +7,21 @@ from utilities import get_dhalls, get_menu, lunch_time, dinner_time
 app = Flask(__name__)
 
 # Setup variables to store the menu so we don't have to fetch it every time.
-lunch = {
-    "fetched_on": "",
-    "entrees": [],
-    "soups": []
-}
+location = []
 
-dinner = {
-    "fetched_on": "",
-    "entrees": [],
-    "soups": []
-}
+for i in range(99):
+    location.append({
+        "lunch": {
+            "fetched_on": "",
+            "entrees": [],
+            "soups": []
+        },
+        "dinner": {
+            "fetched_on": "",
+            "entrees": [],
+            "soups": []
+        }
+    })
 
 
 @app.route("/")
@@ -26,36 +30,29 @@ def index():
     return render_template("index.html")
 
 
-@app.route("/location")
-def location():
-    return render_template("location.html")
-
-
-@app.route("/entree-select")
-def entree_select():
-    return render_template("entree-select.html")
-
-
 @app.route("/review")
 def review():
     """Show review form for user to write review"""
+    # TODO: add check to make sure this user has yet to review this meal at this DHall
 
-    location_id = request.args.get("location")
+    location_id = int(request.args.get("location"))
 
     date = datetime.now()
     date_string = date.strftime("%m/%d/%Y")
 
     if lunch_time():
-        if lunch["fetched_on"] != date_string:
-            lunch.update(get_menu(location=location_id, meal=2))
+        if location[location_id]["lunch"]["fetched_on"] != date_string:
+            location[location_id]["lunch"].update(
+                get_menu(location=location_id, meal=2))
 
-        return render_template("review.html", entrees=lunch["entrees"], soups=lunch["soups"])
+        return render_template("review.html", dishes=location[location_id]["lunch"], meal_name="Lunch", meal_date=date_string)
 
     elif dinner_time():
-        if dinner["fetched_on"] != date_string:
-            dinner.update(get_menu(location=location_id, meal=3))
+        if location[location_id]["dinner"]["fetched_on"] != date_string:
+            location[location_id]["dinner"].update(
+                get_menu(location=location_id, meal=3))
 
-        return render_template("review.html", entrees=dinner["entrees"], soups=dinner["soups"])
+        return render_template("review.html", dishes=location[location_id]["dinner"], meal_name="Dinner", meal_date=date_string)
 
     else:
         return redirect("/reviews")
@@ -70,14 +67,14 @@ def select_dhall():
     return render_template("dhall-select.html", dhalls=dhalls)
 
 
-@app.route("/menu")
-def menu():
-    return render_template("index.html")
-
-
 @app.route("/reviews")
 def reviews():
     return render_template("reviews.html")
+
+
+@app.route("/menu")
+def menu():
+    return render_template("menu.html")
 
 
 @app.route("/about")

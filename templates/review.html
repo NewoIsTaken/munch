@@ -3,8 +3,60 @@
 
 {% block main %}
 
-{% for item in entrees %}
-<p>{{ item["Recipe_Print_As_Name"] }}</p>
-{% endfor %}
+
+
+<h2 class="text-2xl font-semibold text-off-black text-center mb-2">{{ meal_name }} – {{ meal_date }}</h2>
+
+<div class="space-y-6 w-full max-w-xl mx-auto text-left">
+    <form method="post" action="/rate">
+        {% for category in dishes %}
+        {% if category != "fetched_on" %}
+        <div class="bg-white/60 rounded-xl shadow p-4">
+            <h3 class="text-xl font-bold text-off-black mb-2">
+                {{ category }}
+            </h3>
+            <ul class="list-disc list-inside text-off-black">
+                {% for item in dishes[category] %}
+                <p class="mt-2">{{ item["Recipe_Print_As_Name"] }}</p>
+                <i class="fa-solid fa-star cursor-pointer" id="{{ item['Recipe_Print_As_Name'] }}_1"
+                    onclick="onStarClick(this)"></i>
+                <i class="fa-solid fa-star cursor-pointer" id="{{ item['Recipe_Print_As_Name'] }}_2"
+                    onclick="onStarClick(this)"></i>
+                <i class="fa-solid fa-star cursor-pointer" id="{{ item['Recipe_Print_As_Name'] }}_3"
+                    onclick="onStarClick(this)"></i>
+                <i class="fa-solid fa-star cursor-pointer" id="{{ item['Recipe_Print_As_Name'] }}_4"
+                    onclick="onStarClick(this)"></i>
+                <i class="fa-solid fa-star cursor-pointer" id="{{ item['Recipe_Print_As_Name'] }}_5"
+                    onclick="onStarClick(this)"></i>
+                <input type="number" min="1" max="5" name="{{ item['Recipe_Print_As_Name'] }}"
+                    id="{{ item['Recipe_Print_As_Name'] }}" hidden>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+        {% endfor %}
+        <input type="submit" name="submit" id="submit">
+    </form>
+</div>
+<script>
+    function onStarClick(element) {
+        const elementId = element.id;
+        const idArray = elementId.split("_");
+        const dishName = idArray[0];
+        const dishRating = parseInt(idArray[1]);
+
+        const ratingInput = document.getElementById(dishName);
+        ratingInput.value = dishRating;
+
+        for (let i = 1; i <= dishRating; i++) {
+            const star = document.getElementById(dishName + "_" + i);
+            star.classList.add("text-orange-400");
+        }
+        for (let i = dishRating + 1; i <= 5; i++) {
+            const star = document.getElementById(dishName + "_" + i);
+            star.classList.remove("text-orange-400");
+        }
+    }
+</script>
 
 {% endblock %}
