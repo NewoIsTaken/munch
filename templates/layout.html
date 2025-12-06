@@ -20,38 +20,35 @@
       --color-stone: #C4C4C4;
     }
   </style>
-
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='Munchlogo.PNG') }}" />
     <title>Munch!</title>
 </head>
 
 <body class="bg-stone">
 
     <!-- TOP TITLE BLOCK -->
-    <header class="relative w-full bg-stone py-14 flex justify-center items-end">
+    <header class="relative w-full bg-stone h-60 flex justify-center items-center">
         <a href="{{ url_for('index') }}" class="hover:opacity-80 transition">
-            <h1 class="text-4xl md:text-5xl font-extrabold text-crimson cursor-pointer">
-                Munch!
-            </h1>
+            <img 
+                src="{{ url_for('static', filename='IMG_2249.png') }}" 
+                alt="Munch Logo" 
+                class="max-h-70 w-6/7 mx-auto"
+            />
         </a>
 
-        <!-- Seamless sine-like wave: gray above, azure below -->
+        <!-- Wave at the bottom -->
         <div class="absolute bottom-0 left-0 w-full leading-[0]">
             <svg class="block w-full h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 20"
                 preserveAspectRatio="none">
-
-                <!-- Midline at y=10, amplitude 5, repeats uniformly -->
-                <path d="
-				M0,10
-				C5,0   15,0   20,10
-				S35,20 40,10
-				S55,0  60,10
-				S75,20 80,10
-				S95,0  100,10
-				S115,20 120,10
-				V20 H0 Z" fill="#E6FAFA" />
+                <path 
+                    d="M0,10 C5,0 15,0 20,10 S35,20 40,10 S55,0 60,10 S75,20 80,10 S95,0 100,10 S115,20 120,10 V20 H0 Z" 
+                    fill="#E6FAFA" 
+                />
             </svg>
         </div>
     </header>
+
+
 
 
     <!-- MAIN: full-width blue, centered inner column -->
