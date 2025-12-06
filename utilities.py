@@ -1,5 +1,24 @@
 """Module with utilites for fetching things from HUDS's API"""
 
+# Munch: an app to streamline the Harvard University Dining Services
+# menu and allow students to rate and view others' ratings of their
+# dining hall's food
+#
+# Copyright (C) 2025  Brian Tollar, Brody Van Wave, Owen Wang
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
 import os
 from datetime import datetime, time
 import requests
