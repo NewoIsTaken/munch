@@ -37,3 +37,4 @@ Or running the app in the virtual environment with `pipenv run`:
 ```bash
 pipenv run flask run
 ```
+Then, a webserver will be started on your local computer at `localhost:5000` where you can access this flask application.
