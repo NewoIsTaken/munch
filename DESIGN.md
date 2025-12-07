@@ -9,7 +9,7 @@
 ### In the beginning, there was Munch.
 At the beginning of the process, we spent a long time brainstorming what we wanted to do. Over lunch, the picky eater in our group, Brian, pointed out how students never know how the food is like at Berg unless he tried it (and didn't like it) himself. From then, Munch was born.
 
-### Platform Ideation
+### General Platform Ideation
 Once we had a vague idea of what we wanted to do, we spent significant time drawing out exactly how we envision people interacting with our app. Knowing the natural laziness of us all, we knew we had to make the app as straightforward as possible to promote more usage of the app, else people would not go through the hassle. We held this value key throughout the rest of our design: something lightweight and quick that students would be able to quickly open, use, and the move on, perhaps during a meal or shortly after on their walk out.
 
 While we could've made iOS/Android native applications, this would be much more complex and require multi-platform development to reach everyone with a mobile device. Additionally, this would require students to install yet another application on their phones that just adds to the massive amount of random apps we all have our phones nowadays. So, we decided to use a web application approach which allows us to design one application that is cross platform by nature.
