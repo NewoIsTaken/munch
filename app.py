@@ -38,7 +38,10 @@ def review():
     # TODO: add check to make sure this user has yet to review this meal at this DHall
 
     # Get location_id for the location we're making this review for
-    location_id = int(request.args.get("location"))
+    try:
+        location_id = int(request.args.get("location"))
+    except TypeError:
+        return "No location provided"
 
     # Get the current date as MM/DD/YYYY
     date = datetime.now()
@@ -88,7 +91,10 @@ def select_dhall():
 def process_rating():
     """Take in rating information from form, process it, and store it"""
     # Get the location for which we are rating
-    location_id = int(request.form.get("location"))
+    try:
+        location_id = int(request.args.get("location"))
+    except TypeError:
+        return "No location provided"
 
     # Create DB connection to the SQLite db
     db_connection = sqlite3.connect("munch.db")
@@ -141,7 +147,10 @@ def process_rating():
 def reviews():
     """Display the current reviews"""
     # Get the location for which we are trying to get the reviews for
-    location_id = int(request.args.get("location"))
+    try:
+        location_id = int(request.args.get("location"))
+    except TypeError:
+        return "No location provided"
 
     # Get the current date as MM/DD/YYYY
     date = datetime.now()
@@ -183,7 +192,10 @@ def reviews():
 def menu():
     """Get menu info and render it"""
     # Get the location_id for the location we are trying to query for
-    location_id = int(request.args.get("location"))
+    try:
+        location_id = int(request.args.get("location"))
+    except TypeError:
+        return "No location provided"
 
     # Get the current date as MM/DD/YYYY
     date = datetime.now()
