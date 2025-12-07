@@ -64,7 +64,7 @@ def review():
             return response
 
         # Update cache with the new menu
-        location[location_id][meal_name].update(response)
+        location[location_id][meal_name] = response
 
     # Now, render the review screen with this info.
     return render_template("review.html",
@@ -191,13 +191,17 @@ def menu():
 
     # check if we already have a current lunch menu fetched. if not, update our cache
     if location[location_id]["lunch"]["fetched_on"] != date_string:
-        location[location_id]["lunch"].update(
-            get_menu(location=location_id, meal=2))
+        response = get_menu(location=location_id, meal=2)
+        if not isinstance(response, dict):
+            return response
+        location[location_id]["lunch"] = response
 
     # check if we already have a current dinner menu fetched. if not, update our cache
     if location[location_id]["dinner"]["fetched_on"] != date_string:
-        location[location_id]["dinner"].update(
-            get_menu(location=location_id, meal=3))
+        response = get_menu(location=location_id, meal=3)
+        if not isinstance(response, dict):
+            return response
+        location[location_id]["dinner"] = response
 
     return render_template("menu.html",
                            lunch=location[location_id]["lunch"],
