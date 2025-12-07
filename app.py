@@ -56,7 +56,7 @@ def review():
         meal_id = 3
 
     else:
-        return redirect("/reviews?location=" + location_id)
+        return redirect("/reviews?location=" + str(location_id))
 
     # If the menu for this meal for this location selected has yet to be fetched today, do so
     if location[location_id][meal_name]["fetched_on"] != date_string:
