@@ -19,22 +19,22 @@ pipenv install
 ```
 
 ### Harvard API Setup
-Additionally, this project fetches the menu information from Harvard University Information Technology's (HUIT's) Dining API. However, in order to use this API, one must register an application with [HUIT's API portal](https://portal.apis.huit.harvard.edu/).
+Additionally, this project fetches the menu information from Harvard University Information Technology's (HUIT's) Dining API. However, in order to use this API, one must register an application with [HUIT's API portal](https://portal.apis.huit.harvard.edu/) after signing in. Only Harvard affiliates with HarvardKeys are allowed to do so.
 
-Then, one can find their application that they created on the [My Apps](https://portal.apis.huit.harvard.edu/my-apps) page. Clicking into the application, enable the Dining API in the API section. Then, an API key will be generated on the same page.
+To register an app, one can click on the new app button on the [My Apps](https://portal.apis.huit.harvard.edu/my-apps) page. Then, enable the Dining API in the API section. An API key for the Dining API will be generated on the same page.
 
 Create a duplicate of the `.env.example` file or rename it to `.env`. Paste the API key that you obtained from HUIT's API Portal into the indicated field.
 
 ## Usage
-Once the virtual environment is created for this project, you can then start the Flask application.
+Once the virtual environment is created for this project, you can then start the Flask application:
 
-By activating the virtual environment and then running the Flask app as normal:
+ - By activating the virtual environment and then running the Flask app as normal:
 ```bash
 pipenv shell
 flask run
 ```
-Or running the app in the virtual environment with `pipenv run`:
+ - Or running the app in the virtual environment with `pipenv run`:
 ```bash
 pipenv run flask run
 ```
-Then, a webserver will be started on your local computer at `localhost:5000` where you can access this flask application.
+Then, a webserver will be started on your local computer at `localhost:5000` where you can access Munch.

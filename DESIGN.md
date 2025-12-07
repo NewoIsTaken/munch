@@ -9,7 +9,7 @@ What is the worst part about Harvard? If you said something other than Harvard U
 This project was created by Brian, Brody, and Owen, and we all want to go into some engineering field. Outside of Harvard's busy classes and extracurriculars, we have created a Boston Food Bracket (BFB) where we go around the Cambridge area and rate food at various restaurants. This very idea inspired this project. Sure, there are food rating apps like Yelp or Roundtable, but they will never branch into our Harvard community. It's time we give every Harvard student the opportunity to rate the food we eat on a daily like in our BFB and settle whose dining hall really is the best (and worst).
 
 ### What We Wanted in Munch
-The menus HUDS publishes are very bland and difficult to navigate, so we figured we'd start there with a cleaner menu style using HUIT's Dining API. Then, we wanted students to be able to see the data we will get with an average rating for every main food item in every dining hall. Most of all, we needed students to continue using Munch every day after their meal. With all that in mind, we wanted Munch to be the following:
+The menus HUDS publishes are very bland and difficult to navigate. So, we figured we'd start there with a cleaner menu style using HUIT's Dining API. Then, we wanted students to be able to see the data we will get with an average rating for every main food item in every dining hall. Most of all, we needed students to continue using Munch every day after their meal. With all that in mind, we wanted Munch to be the following:
  - Visually appealing
  - Easy/efficient to access and rate
  - Enjoyable to interact with
@@ -31,7 +31,9 @@ After firming up our target audicence and how they would interact with our appli
 ### Flask App Development
 We've determined that we wanted to create a web app and we now knew what it would look like. Then, we had to go forward with creating the application. We were considering what platform to develop it on and we eventually selected Flask and Jinja due to our more familiarity with it in comparison to React. Thus, this application uses a very similar stack compared to the CS50 finance PSet.
 
-Then, lots of coding was done.
+Now that we had a solid idea of what we wanted to do, lots of code was written following our design ideas.
+
+In keeping with making the app as easy to use as possible, we implemented large, easy-to-click buttons and used cookies to store a user's last-used dining hall so they did not have to select it again.
 
 ## Future Improvements
 Should we continue work on this project in the future, there are more features that we would add, listed in order of priority:
