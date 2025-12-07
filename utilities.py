@@ -5,9 +5,11 @@ from datetime import datetime, time
 import requests
 from dotenv import load_dotenv
 
-load_dotenv()
-
+# HUIT Dining API URL
 URL = "https://go.apis.huit.harvard.edu/ats/dining/v3/"
+
+# Load .env file and get the API_KEY env variable and set it as a header for the API requests
+load_dotenv()
 API_KEY = os.getenv("API_KEY")
 headers = {
     "X-Api-Key": API_KEY
@@ -16,39 +18,57 @@ headers = {
 
 def get_dhalls():
     """Get and return list of dining halls from HUDS's API"""
+    # API Request building
     endpoint = "locations"
 
     response = requests.get(url=URL + endpoint, headers=headers, timeout=100)
 
+    if response.status_code != 200:
+        return response.status_code
+
+    # Response from API
     dhalls = response.json()
 
+    # Clean up the list of HUDS locations to only the house dining halls and Berg
     clean_list = [dhall for dhall in dhalls
                   if "Hall" in dhall["location_name"]
                   or "House" in dhall["location_name"]]
 
     return clean_list
 
+# Location is the HUDS API two digit location ID
+# Meal is breakfast, lunch, and dinner passed in as 1, 2, and 3
+# Date is the date of menu to return, by default today's
 
-def get_menu(location, meal):
+
+def get_menu(location, meal, date=datetime.now()):
     """Get and return menu items given the dining hall location ID"""
-    endpoint = "recipes"
 
+    # API Request building
+    endpoint = "recipes"
     params = {
         "locationId": f'{location:02}'
     }
 
+    # Make API Request
     response = requests.get(
         url=URL + endpoint, params=params, headers=headers, timeout=100)
 
+    if response.status_code != 200:
+        return response.status_code
+
+    # Get response
     items = response.json()
 
-    date = datetime.now()
+    # Get the current date as MM/DD/YYYY
     date_string = date.strftime("%m/%d/%Y")
 
+    # Clean the list of dishes to only include those of today and of the meal specified
     clean_list = [item for item in items
                   if item["Serve_Date"] == date_string
                   and item["Meal_Number"] == meal]
 
+    # Format the API response into our dictionary.
     meal_dict = {
         "fetched_on": date_string,
         "entrees": [item for item in clean_list if item["Menu_Category_Name"] == "Entrees"],
@@ -58,6 +78,9 @@ def get_menu(location, meal):
     return meal_dict
 
 
+# Start is the start time of lunch, by default 11:30
+# End is the end time of lunch, by default when dinner starts at 4:30
+# The time we want to query if lunchtime is the time now
 def lunch_time(start=time(11, 30), end=time(16, 30), now=datetime.now().time()):
     """Check if current time is during dinner"""
     now = now or datetime.now().time()
@@ -68,6 +91,9 @@ def lunch_time(start=time(11, 30), end=time(16, 30), now=datetime.now().time()):
     return now >= start or now <= end
 
 
+# Start is the start time of dinner, by default 4:30
+# End is the end time of dinner, by default when dinner starts at 7:30
+# The time we want to query if dinnertime is the time now
 def dinner_time(start=time(16, 30), end=time(19, 30), now=datetime.now().time()):
     """Check if current time is during dinner"""
     now = now or datetime.now().time()
