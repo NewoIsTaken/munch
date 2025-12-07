@@ -126,6 +126,7 @@ def review():
 
 
 @app.route("/dhall-select")
+@login_required
 def select_dhall():
     """Render dining hall selection form and then redirect user to the appropriate page."""
     # Get the location where we want to go after we select dining hall
@@ -142,7 +143,7 @@ def process_rating():
     """Take in rating information from form, process it, and store it"""
     # Get the location for which we are rating
     try:
-        location_id = int(request.args.get("location"))
+        location_id = int(request.form.get("location"))
     except TypeError:
         return "No location provided"
 
