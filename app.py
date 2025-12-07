@@ -1,12 +1,36 @@
 """Munch Flask App"""
 
+import os
 import datetime
 from datetime import datetime, time
 import sqlite3
-from flask import Flask, redirect, render_template, request
-from utilities import get_dhalls, get_menu, lunch_time, dinner_time
+from dotenv import load_dotenv
+from flask import Flask, redirect, render_template, request, abort, session, url_for
+from flask_session import Session
+from authlib.integrations.flask_client import OAuth, OAuthError
+from utilities import get_dhalls, get_menu, lunch_time, dinner_time, login_required
+
+load_dotenv()
+
+for variable in ["API_KEY", "CLIENT_ID", "CLIENT_SECRET", "SERVER_METADATA_URL"]:
+    if not os.environ.get(variable):
+        abort(500, f"Missing {variable}")
 
 app = Flask(__name__)
+
+app.config["SESSION_PERMANENT"] = False
+app.config["SESSION_TYPE"] = "filesystem"
+Session(app)
+
+# Configure OAuth
+oauth = OAuth(app)
+oauth.register(
+    "cs50",
+    client_id=os.environ.get("CLIENT_ID"),
+    client_kwargs={"scope": "openid profile email"},
+    client_secret=os.environ.get("CLIENT_SECRET"),
+    server_metadata_url=os.environ.get("SERVER_METADATA_URL")
+)
 
 # Setup variables to store the menu so we don't have to fetch it every time.
 location = []
@@ -27,12 +51,37 @@ for i in range(99):
 
 
 @app.route("/")
+@login_required
 def index():
     """Render Homepage"""
     return render_template("index.html")
 
 
+@app.route("/login")
+def login():
+    """Login page"""
+    return oauth.cs50.authorize_redirect(redirect_uri=url_for("callback", _external=True))
+
+
+@app.route("/logout")
+def logout():
+    """Logout page"""
+    session.clear()
+    return redirect(url_for("index"))
+
+
+@app.route("/callback")
+def callback():
+    """OAuth Callback"""
+    try:
+        session["userinfo"] = oauth.cs50.authorize_access_token()["userinfo"]
+    except OAuthError:
+        abort(410)
+    return redirect(url_for("index"))
+
+
 @app.route("/review")
+@login_required
 def review():
     """Show review form for user to write review"""
     # TODO: add check to make sure this user has yet to review this meal at this DHall
@@ -88,6 +137,7 @@ def select_dhall():
 
 
 @app.route("/rate", methods=["POST"])
+@login_required
 def process_rating():
     """Take in rating information from form, process it, and store it"""
     # Get the location for which we are rating

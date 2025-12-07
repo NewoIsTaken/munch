@@ -1,7 +1,9 @@
 """Module with utilites for fetching things from HUDS's API"""
 
+from functools import wraps
 import os
 from datetime import datetime, time
+from flask import redirect, request, session, url_for
 import requests
 from dotenv import load_dotenv
 
@@ -102,3 +104,17 @@ def dinner_time(start=time(16, 30), end=time(19, 30), now=datetime.now().time())
         return start <= now <= end
     # handles ranges that cross midnight (e.g., 22:00–02:00)
     return now >= start or now <= end
+
+
+def login_required(f):
+    """
+    Decorate routes to require login.
+
+    https://flask.palletsprojects.com/en/stable/patterns/viewdecorators/
+    """
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if session.get("userinfo") is None:
+            return redirect(url_for("login", next=request.url))
+        return f(*args, **kwargs)
+    return decorated_function
