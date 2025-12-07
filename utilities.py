@@ -17,6 +17,8 @@ headers = {
     "X-Api-Key": API_KEY
 }
 
+categories = ["Entrees", "Today's Soup", "Desserts"]
+
 
 def get_dhalls():
     """Get and return list of dining halls from HUDS's API"""
@@ -72,10 +74,12 @@ def get_menu(location, meal, date=datetime.now()):
 
     # Format the API response into our dictionary.
     meal_dict = {
-        "fetched_on": date_string,
-        "entrees": [item for item in clean_list if item["Menu_Category_Name"] == "Entrees"],
-        "soups": [item for item in clean_list if item["Menu_Category_Name"] == "Today's Soup"]
+        "fetched_on": date_string
     }
+
+    for category in categories:
+        meal_dict[category] = [
+            item for item in clean_list if item["Menu_Category_Name"] == category]
 
     return meal_dict
 

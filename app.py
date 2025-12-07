@@ -38,14 +38,10 @@ location = []
 for i in range(99):
     location.append({
         "lunch": {
-            "fetched_on": "",
-            "entrees": [],
-            "soups": []
+            "fetched_on": ""
         },
         "dinner": {
-            "fetched_on": "",
-            "entrees": [],
-            "soups": []
+            "fetched_on": ""
         }
     })
 
