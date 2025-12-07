@@ -3,13 +3,13 @@
 ## Background
 
 ### The Pitch
-What is the worst part about Harvard? If you said something other than HUDS, then you either aren't a Harvard student or live in a great house. Frankly, some of the food that HUDS provides is inedible, and there have been many occassions where students have chosen to eat out rather than eat at their respective dining hall. We want to change that by collecting public data on what sutdents like and dislike so that HUDS can workshop their menu.
+What is the worst part about Harvard? If you said something other than Harvard University Dining Services (HUDS), then you either aren't a Harvard student or live in a great house. Frankly, some of the food that HUDS provides is inedible, and there have been many occassions where students have chosen to eat out rather than eat at their respective dining hall. We want to change that by collecting public data on what sutdents like and dislike so that HUDS can workshop their menu.
 
 ### Who We Are
 This project was created by Brian, Brody, and Owen, and we all want to go into some engineering field. Outside of Harvard's busy classes and extracurriculars, we have created a Boston Food Bracket (BFB) where we go around the Cambridge area and rate food at various restaurants. This very idea inspired this project. Sure, there are food rating apps like Yelp or Roundtable, but they will never branch into our Harvard community. It's time we give every Harvard student the opportunity to rate the food we eat on a daily like in our BFB and settle whose dining hall really is the best (and worst).
 
 ### What We Wanted in Munch
-The menus HUDS publishes are very bland and difficult to navigate, so we figured we'd start there with a cleaner menu style using the HUDS API. Then, we wanted students to be able to see the data we will get with an average rating for every main food item in every dining hall. Most of all, we needed students to continue using Munch every day after their meal. With all that in mind, we wanted Munch to be the following:
+The menus HUDS publishes are very bland and difficult to navigate, so we figured we'd start there with a cleaner menu style using HUIT's Dining API. Then, we wanted students to be able to see the data we will get with an average rating for every main food item in every dining hall. Most of all, we needed students to continue using Munch every day after their meal. With all that in mind, we wanted Munch to be the following:
  - Visually appealing
  - Easy/efficient to access and rate
  - Enjoyable to interact with
@@ -17,8 +17,8 @@ The menus HUDS publishes are very bland and difficult to navigate, so we figured
 
 ## How we made it.
 
-### In the beginning, there was Munch.
-At the beginning of the process, we spent a long time brainstorming what we wanted to do. Over lunch, the picky eater in our group, Brian, pointed out how students never know how the food is like at Berg unless he tried it (and didn't like it) himself. From then, Munch was born.
+### In the beginning, there was a picky eater.
+At the beginning of the process, we spent a long time brainstorming what we wanted to do. Over lunch, the picky eater in our group, Brian, pointed out how students never know how the food is like at Berg unless he tried it (and didn't like it) himself. (Can you tell he wrote the pitch?) From then, Munch was born.
 
 ### General Platform Ideation
 Once we had a vague idea of what we wanted to do, we spent significant time drawing out exactly how we envision people interacting with our app. Knowing the natural laziness of us all, we knew we had to make the app as straightforward as possible to promote more usage of the app, else people would not go through the hassle. We held this value key throughout the rest of our design: something lightweight and quick that students would be able to quickly open, use, and the move on, perhaps during a meal or shortly after on their walk out.
