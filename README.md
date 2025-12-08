@@ -2,7 +2,7 @@
 
 Munch is a web application that queries Harvard University Dining Service's (HUDS's) API to fetch menu info and provide a platform for Harvard students to rate their meals at their dining hall.
 
-It is currently hosted at [munch-2wuw.onrender.com](https://munch-2wuw.onrender.com) if you would like to access a demo of it.
+It is currently hosted at [munch-2wuw.onrender.com](https://munch-2wuw.onrender.com) if you would like to access a demo of it. This is not a production instance of the application; it will automatically spin down after a period of inactivity which may produce some weird behavior.
 
 ## Installation & Setup
 
