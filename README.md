@@ -50,7 +50,7 @@ Then, CS50 ID will provide you a Client Identifier, Client Secret, and OpenID Pr
 Now, your application will be able to use CS50 ID to provide identification services with HarvardKey.
 
 ## Usage
-Once the virtual environment is created for this project, you can then start the Flask application:
+Once the virtual environment is created for this project, you can then start the Flask application in a development environment:
 
  - By activating the virtual environment and then running the Flask app as normal:
 ```bash
@@ -61,4 +61,6 @@ flask run
 ```bash
 pipenv run flask run
 ```
-Then, a webserver will be started on your local computer at `localhost:5000` where you can access Munch.
+Then, a webserver will be started on your local computer at `localhost:5000` where you can access Munch. Optionally, you can also specify `--debug` to `flask run` if you want debug functionality like automatic updates when you edit files so you do not need to restart the flask server.
+
+Alternatively, if you would like to run a production server, you can use `gunicorn` by substituting `flask run` with `gunicorn --workers=2 "app:app"`.
