@@ -4,6 +4,7 @@ from functools import wraps
 import os
 from datetime import datetime, time
 from flask import redirect, request, session, url_for
+import pytz
 import requests
 from dotenv import load_dotenv
 
@@ -45,7 +46,7 @@ def get_dhalls():
 # Date is the date of menu to return, by default today's
 
 
-def get_menu(location, meal, date=datetime.now()):
+def get_menu(location, meal, date=datetime.now(pytz.timezone('America/New_York'))):
     """Get and return menu items given the dining hall location ID"""
 
     # API Request building
@@ -87,9 +88,9 @@ def get_menu(location, meal, date=datetime.now()):
 # Start is the start time of lunch, by default 11:30
 # End is the end time of lunch, by default when dinner starts at 4:30
 # The time we want to query if lunchtime is the time now
-def lunch_time(start=time(11, 30), end=time(16, 30), now=datetime.now().time()):
+def lunch_time(start=time(11, 30), end=time(16, 30), now=datetime.now(pytz.timezone('America/New_York')).time()):
     """Check if current time is during dinner"""
-    now = now or datetime.now().time()
+    now = now or datetime.now(pytz.timezone('America/New_York')).time()
     # handles ranges that do not cross midnight
     if start <= end:
         return start <= now <= end
@@ -100,9 +101,9 @@ def lunch_time(start=time(11, 30), end=time(16, 30), now=datetime.now().time()):
 # Start is the start time of dinner, by default 4:30
 # End is the end time of dinner, by default when dinner starts at 7:30
 # The time we want to query if dinnertime is the time now
-def dinner_time(start=time(16, 30), end=time(19, 30), now=datetime.now().time()):
+def dinner_time(start=time(16, 30), end=time(19, 30), now=datetime.now(pytz.timezone('America/New_York')).time()):
     """Check if current time is during dinner"""
-    now = now or datetime.now().time()
+    now = now or datetime.now(pytz.timezone('America/New_York')).time()
     # handles ranges that do not cross midnight
     if start <= end:
         return start <= now <= end
