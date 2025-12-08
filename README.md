@@ -2,7 +2,7 @@
 
 Munch is a web application that queries Harvard University Dining Service's (HUDS's) API to fetch menu info and provide a platform for Harvard students to rate their meals at their dining hall.
 
-## Installation
+## Installation & Setup
 
 ### Project
 This project uses [pipenv](https://pipenv.pypa.io/) to create a virtual environment and manage dependencies for the project.
@@ -24,6 +24,28 @@ Additionally, this project fetches the menu information from Harvard University 
 To register an app, one can click on the new app button on the [My Apps](https://portal.apis.huit.harvard.edu/my-apps) page. Then, enable the Dining API in the API section. An API key for the Dining API will be generated on the same page.
 
 Create a duplicate of the `.env.example` file or rename it to `.env`. Paste the API key that you obtained from HUIT's API Portal into the indicated field.
+
+### CS50 ID Authentication Setup
+This project uses [CS50 ID](https://cs50.readthedocs.io/id.cs50.io/), an implementation of OpenID Connect built on Auth0 for authentication with HarvardKey. This is to ensure that users are only Harvard Affiliates and each user votes once per meal. (One vote per meal limit has yet to be implemented.) In order for this to work, one must register an app with CS50 ID at [id.cs50.io](https://id.cs50.io). To do so, you must log into CS50 ID either with HarvardKey or MIT Touchstone. Then, create an application by providing a description and redirection URL.
+
+In order for this application to work, you must add the following redirection URLs:
+```
+http://[HOSTNAME]/callback
+```
+
+For example, if this application is hosted locally with a development Flask server, this would be:
+```
+http://127.0.0.1:5000/callback
+```
+
+Also, if HTTPS is enabled, the redirection URLs must be amended with the appropriate protocol.
+
+Then, CS50 ID will provide you a Client Identifier, Client Secret, and OpenID Provider Metadata. These go into the `.env` file as described:
+ - Client Identifier: `CLIENT_ID`
+ - Client Secret: `CLIENT_SECRET`
+ - OpenID Provider: `SERVER_METADATA_URL`
+
+Now, your application will be able to use CS50 ID to provide identification services with HarvardKey.
 
 ## Usage
 Once the virtual environment is created for this project, you can then start the Flask application:

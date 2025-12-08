@@ -18,7 +18,7 @@ The menus HUDS publishes are very bland and difficult to navigate. So, we figure
 ## How we made it.
 
 ### In the beginning, there was a picky eater.
-At the beginning of the process, we spent a long time brainstorming what we wanted to do. Over lunch, the picky eater in our group, Brian, pointed out how students never know how the food is like at Berg unless he tried it (and didn't like it) himself. (Can you tell he wrote the pitch?) From then, Munch was born.
+At the beginning of the process, we spent a long time brainstorming what we wanted to do. Over lunch, the picky eater in our group, Brian, pointed out how students never know how the food is like at Berg unless he tried it (and didn't like it) himself. (Can you tell he wrote the pitch?) In that moment, Munch was born.
 
 ### General Platform Ideation
 Once we had a vague idea of what we wanted to do, we spent significant time drawing out exactly how we envision people interacting with our app. Knowing the natural laziness of us all, we knew we had to make the app as straightforward as possible to promote more usage of the app, else people would not go through the hassle. We held this value key throughout the rest of our design: something lightweight and quick that students would be able to quickly open, use, and the move on, perhaps during a meal or shortly after on their walk out.
@@ -29,16 +29,22 @@ While we could've made iOS/Android native applications, this would be much more 
 After firming up our target audicence and how they would interact with our application, we began design on the UI/UX of Munch. Given the design constraint of something simple and easy that held our users hand, we wanted to make the UI & UX as streamlined as possible with limited choices to make and one straightforward flow. With this in mind, we outlined our application both on Figma and whiteboard sketches, designing our home and rating pages. This is what lead to our very "app-like" and simple homepage who's main function is just find out what the user wants us to do. Additionally, our rating page is also a simple, straightforward star rating.
 
 ### Flask App Development
-We've determined that we wanted to create a web app and we now knew what it would look like. Then, we had to go forward with creating the application. We were considering what platform to develop it on and we eventually selected Flask and Jinja due to our more familiarity with it in comparison to React. Thus, this application uses a very similar stack compared to the CS50 finance PSet.
+We've determined that we wanted to create a web app and we now knew what it would look like. Then, we had to go forward with creating the application. We were considering what platform to develop it on, primarily considering Flask or React. We eventually selected Flask and Jinja due to our higher familiarity with it. Thus, this application uses a very similar stack compared to the CS50 Finance PSet.
 
 Now that we had a solid idea of what we wanted to do, lots of code was written following our design ideas.
 
-In keeping with making the app as easy to use as possible, we implemented large, easy-to-click buttons and used cookies to store a user's last-used dining hall so they did not have to select it again.
+In keeping with our aforementioned design ideology of mobile-first and making the app as easy to use as possible, we implemented large, easy-to-click buttons and used cookies to store a user's last-used dining hall so they only needed to select their dining hall once and only needed to use the dropdown to change their selection if they change dining halls in the future.
+
+Additionally, we wanted to make reusable components wherever possible. For example, many of our routes would prompt the user to select their dining hall (rate, menu, and reviews). Thus, we only made one dining hall select page and pass in a redirect parameter that tells the page where to go after a user selects a dining hall. This means that if we were to update the dining hall selection functionality, we only would have to do so at one spot.
 
 ## Future Improvements
 Should we continue work on this project in the future, there are more features that we would add, listed in order of priority:
- - Implement HarvardKey login to ensure only Harvard Students/Affiliates can vote and prevent multiple votes by the same person.
- - Migrate to a hosted SQL platform so we have a place to persistently and continuously store our voting data since SQLite is not built for such an application use-case.
+ - Use HarvardKey login to prevent multiple votes by the same person by keeping track of them in our database.
+ - Migrate to a hosted SQL platform so we have a place to persistently and continuously store our voting data since SQLite is not built for such an application use-case where we would want data to persist between builds.
+ - Add tabs so students can view a breakdown of all dining hall data together instead of using the dining hall selection menu to change the dining hall that they want information about.
+ - Add data visualizations to the reviews page.
  - Add a commenting feature to the application so users can provide more specific feedback about the meal.
+    -  This would require some type of moderation which is why we've put this off.
  - Add other menu items, including Halal section, etc.
     - Provide a settings page for users to indicate their dietary profile so we only display the appropriate dishes (only halal if you're halal, etc.)
+ - Implement this app in the dining hall and share the data we collect with HUDS!
