@@ -101,7 +101,7 @@ def lunch_time(start=time(11, 30), end=time(16, 30), now=datetime.now(pytz.timez
 # Start is the start time of dinner, by default 4:30
 # End is the end time of dinner, by default when dinner starts at 7:30
 # The time we want to query if dinnertime is the time now
-def dinner_time(start=time(16, 30), end=time(19, 30), now=datetime.now(pytz.timezone('America/New_York')).time()):
+def dinner_time(start=time(16, 30), end=time(23, 59), now=datetime.now(pytz.timezone('America/New_York')).time()):
     """Check if current time is during dinner"""
     now = now or datetime.now(pytz.timezone('America/New_York')).time()
     # handles ranges that do not cross midnight

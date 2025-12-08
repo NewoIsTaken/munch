@@ -97,7 +97,7 @@ def review():
         meal_name = "lunch"
         meal_id = 2
 
-    elif dinner_time(end=time(21, 59)):
+    elif dinner_time():
         meal_name = "dinner"
         meal_id = 3
 
@@ -161,7 +161,7 @@ def process_rating():
         meal_id = 3
 
     else:
-        return "It is not currently a meal time so we can not process your rating."
+        return "Lunch and dinner have not happened yet. Come back later!"
 
     # For each category of dish
     for category in location[location_id][meal_name]:
