@@ -123,3 +123,8 @@ def login_required(f):
             return redirect(url_for("login", next=request.url))
         return f(*args, **kwargs)
     return decorated_function
+
+
+def pretty_print(number):
+    """Round number to two decimals"""
+    return str(round(float(number), 2))

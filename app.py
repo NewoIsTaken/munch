@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 from flask import Flask, redirect, render_template, request, abort, session, url_for
 from flask_session import Session
 from authlib.integrations.flask_client import OAuth, OAuthError
-from utilities import get_dhalls, get_menu, lunch_time, dinner_time, login_required
+from utilities import get_dhalls, get_menu, lunch_time, dinner_time, login_required, pretty_print
 
 load_dotenv()
 
@@ -18,6 +18,8 @@ for variable in ["API_KEY", "CLIENT_ID", "CLIENT_SECRET", "SERVER_METADATA_URL"]
         abort(500, f"Missing {variable}")
 
 app = Flask(__name__)
+
+app.jinja_env.filters["pretty_print"] = pretty_print
 
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
