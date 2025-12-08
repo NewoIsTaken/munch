@@ -63,4 +63,4 @@ pipenv run flask run
 ```
 Then, a webserver will be started on your local computer at `localhost:5000` where you can access Munch. Optionally, you can also specify `--debug` to `flask run` if you want debug functionality like automatic updates when you edit files so you do not need to restart the flask server.
 
-Alternatively, if you would like to run a production server, you can use `gunicorn` by substituting `flask run` with `gunicorn --workers=2 "app:app"`.
+Alternatively, if you would like to run a production server, you can use the pre-installed `gunicorn` by substituting `flask run` with `gunicorn --workers=2 "app:app"`. Or, if you're feeling rebellious, you can use any Python WSGI server like `waitress`.
