@@ -97,7 +97,7 @@ def review():
         meal_name = "lunch"
         meal_id = 2
 
-    elif dinner_time():
+    elif dinner_time(end=time(21, 59)):
         meal_name = "dinner"
         meal_id = 3
 
