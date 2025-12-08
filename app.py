@@ -4,11 +4,11 @@ import os
 import datetime
 from datetime import datetime, time
 import sqlite3
-import pytz
+from zoneinfo import ZoneInfo
 from dotenv import load_dotenv
+from authlib.integrations.flask_client import OAuth, OAuthError
 from flask import Flask, redirect, render_template, request, abort, session, url_for
 from flask_session import Session
-from authlib.integrations.flask_client import OAuth, OAuthError
 from utilities import get_dhalls, get_menu, lunch_time, dinner_time, login_required, pretty_print
 
 load_dotenv()
@@ -92,7 +92,7 @@ def review():
         return "No location provided"
 
     # Get the current date as MM/DD/YYYY
-    date = datetime.now(pytz.timezone('America/New_York'))
+    date = datetime.now(ZoneInfo("America/New_York"))
     date_string = date.strftime("%m/%d/%Y")
 
     if lunch_time():
@@ -151,7 +151,7 @@ def process_rating():
     db_cursor = db_connection.cursor()
 
     # Get the current date as DD/MM/YYYY
-    date = datetime.now(pytz.timezone('America/New_York'))
+    date = datetime.now(ZoneInfo("America/New_York"))
     date_string = date.strftime("%m/%d/%Y")
 
     if lunch_time():
@@ -203,7 +203,7 @@ def reviews():
         return "No location provided"
 
     # Get the current date as MM/DD/YYYY
-    date = datetime.now(pytz.timezone('America/New_York'))
+    date = datetime.now(ZoneInfo("America/New_York"))
     date_string = date.strftime("%m/%d/%Y")
 
     # Establish DB connection
@@ -248,7 +248,7 @@ def menu():
         return "No location provided"
 
     # Get the current date as MM/DD/YYYY
-    date = datetime.now(pytz.timezone('America/New_York'))
+    date = datetime.now(ZoneInfo("America/New_York"))
     date_string = date.strftime("%m/%d/%Y")
 
     # check if we already have a current lunch menu fetched. if not, update our cache
