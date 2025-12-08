@@ -50,7 +50,6 @@ for i in range(99):
 
 
 @app.route("/")
-@login_required
 def index():
     """Render Homepage"""
     return render_template("index.html")
@@ -80,7 +79,6 @@ def callback():
 
 
 @app.route("/review")
-@login_required
 def review():
     """Show review form for user to write review"""
     # TODO: add check to make sure this user has yet to review this meal at this DHall
@@ -125,7 +123,6 @@ def review():
 
 
 @app.route("/dhall-select")
-@login_required
 def select_dhall():
     """Render dining hall selection form and then redirect user to the appropriate page."""
     # Get the location where we want to go after we select dining hall
@@ -137,7 +134,6 @@ def select_dhall():
 
 
 @app.route("/rate", methods=["POST"])
-@login_required
 def process_rating():
     """Take in rating information from form, process it, and store it"""
     # Get the location for which we are rating
