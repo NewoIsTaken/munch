@@ -276,4 +276,4 @@ def about():
 @app.route("/test-auth")
 @login_required
 def test_auth():
-    return oauth.cs50.authorize_access_token()
+    return session["userinfo"]
