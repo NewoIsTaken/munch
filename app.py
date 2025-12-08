@@ -271,3 +271,9 @@ def menu():
 def about():
     """Render about page"""
     return render_template("about.html")
+
+
+@app.route("/test-auth")
+@login_required
+def test_auth():
+    return "auth test."
